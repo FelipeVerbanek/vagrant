@@ -2,8 +2,16 @@
 Projeto criado para estudo, onde utiliza algumas tecnologias como Vagrant, Puppet e Ansible.
 O objetivo do projeto é subir algumas maquinas virtuais, com um servidor mysql e um servidor php.
 
+# Criando chave SSH
+* Exemplo:
+```
+ ssh-keygen -t rsa
+```
+Coloque a chave privada no diretorio bionic com o nome id_bionic, e a chave pública dentro do diretorio bionic/configs.
+
 # Vagrant
 
+Primeiramente acesse o diretório "bionic".
 
 * Iniciar maquinas virturais
 ```
@@ -17,27 +25,22 @@ vagrant halt
 ```
 vagrant destroy
 ```
-
-# Criando chave SSH
-* Exemplo:
+* Verificar status das maquinas:
 ```
- ssh-keygen -t rsa
+vagrant status
 ```
-Coloque a chave privada no diretorio bionic com o nome id_bionic, e a chave pública dentro do diretorio bionic/configs.
-
 * Conectando na maquina via ssh:
 ```
-vagrant ssh
+vagrant ssh nome_da_maquina
 ```
 
-# Utilizando Ansible
+* Para testar acesse:
+```
+http://localhost:8888/
+```
+Deve aparecer algo como:
+```
+Testando conexao
 
-Realize a conexão ssh na maquina "ansible", exemplo:
-```
-vagrant ssh ansible
-```
-
-Execute: 
-```
-ansible-playbook -i /vagrant/configs/ansible/hosts /vagrant/configs/ansible/playbook.yml
+Conectado com sucesso
 ```
